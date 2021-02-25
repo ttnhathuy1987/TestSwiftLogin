@@ -1,0 +1,38 @@
+PODS:
+  - Alamofire (5.4.0)
+  - ObjectMapper (4.2.0)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
+  - SwiftyJSON (5.0.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - ObjectMapper
+  - RxCocoa
+  - RxSwift
+  - SwiftyJSON
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - ObjectMapper
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: 3b6a534a3df22db367e4dedeeca73d1ddfcf0e2f
+  ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+
+PODFILE CHECKSUM: 3da78bec278189ef6767dfb213a8043e84c843c5
+
+COCOAPODS: 1.9.3
