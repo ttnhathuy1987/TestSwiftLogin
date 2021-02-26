@@ -19,7 +19,6 @@ class ViewController: UIViewController {
     @IBOutlet var lbErrorEmail: UILabel!
     @IBOutlet var lbErrorPassword: UILabel!
     
-    var userLogin = UserModelLogin()
     var controlLogin = LoginViewModel()
     
     let disposedBag = DisposeBag()
@@ -51,8 +50,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        userLogin.email = ""
-        userLogin.password = ""
         setupScreen()
     }
     
@@ -63,7 +60,9 @@ class ViewController: UIViewController {
         //Setup Button
         btLogin.layer.cornerRadius = 8
         btLogin.rx.tap.bind {
-            self.controlLogin.callApiWithData(userLogin: self.userLogin)
+            self.tfEmail.resignFirstResponder()
+            self.tfPassword.resignFirstResponder()
+            self.controlLogin.callApiWithData()
         }.disposed(by: disposedBag)
         
         //Setup Email Field, Password Field
@@ -75,13 +74,13 @@ class ViewController: UIViewController {
             self?.controlLogin.checkInvalidPassword(password: self?.tfPassword.text)
         }).disposed(by: disposedBag)
     }
-    @IBAction func clickLogin(_ sender: Any) {
-        tfEmail.resignFirstResponder()
-        tfPassword.resignFirstResponder()
-        if btLogin.isEnabled {
-            controlLogin.callApiWithData(userLogin: userLogin)
-        }
-    }
+//    @IBAction func clickLogin(_ sender: Any) {
+//        tfEmail.resignFirstResponder()
+//        tfPassword.resignFirstResponder()
+//        if btLogin.isEnabled {
+//            controlLogin.callApiWithData()
+//        }
+//    }
 }
 
 extension ViewController: LoginViewModelProtocol {
@@ -108,11 +107,9 @@ extension ViewController: LoginViewModelProtocol {
         if type == .email {
             isValidEmail = true
             lbErrorEmail.text = ""
-            userLogin.email = tfEmail.text
         } else {
             isValidPassword = true
             lbErrorPassword.text = ""
-            userLogin.password = tfPassword.text
         }
     }
 }

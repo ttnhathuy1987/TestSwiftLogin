@@ -35,6 +35,8 @@ class LoginViewModel:LoginViewModelProtocol {
     
     var owner: LoginViewModelProtocol?
     
+    var userLogin = UserModelLogin()
+    
     func checkInvalidEmail(email: String?) {
         guard email != nil else {
             alertErro(meessae: "Email or Password must have value",type: .email)
@@ -46,6 +48,7 @@ class LoginViewModel:LoginViewModelProtocol {
             return
         }
         owner?.validAtField(type: .email)
+        userLogin.email = email
     }
     
     func checkInvalidPassword(password: String?) {
@@ -59,9 +62,10 @@ class LoginViewModel:LoginViewModelProtocol {
             return
         }
         owner?.validAtField(type: .password)
+        userLogin.password = password
     }
     
-    func callApiWithData(userLogin: UserModelLogin) {
+    func callApiWithData() {
         
         let dicData = ["email":userLogin.email ?? "", "password": userLogin.password ?? ""]
         
